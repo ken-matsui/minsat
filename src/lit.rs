@@ -7,10 +7,10 @@ pub(crate) struct Lit {
 }
 
 impl Lit {
-    pub(crate) fn new(x: i32, pos: bool) -> Self {
+    pub(crate) fn new(x: i32, neg: bool) -> Self {
         assert!(x >= 0);
         Lit {
-            x: if pos { 2 * x } else { 2 * x + 1 },
+            x: 2 * x + neg as i32,
         }
     }
 

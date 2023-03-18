@@ -69,9 +69,9 @@ impl Parse for Path {
                         }
                         let num = v.abs() - 1;
                         if v > 0 {
-                            clause.push(Lit::new(num, true));
-                        } else {
                             clause.push(Lit::new(num, false));
+                        } else {
+                            clause.push(Lit::new(num, true));
                         }
                     }
                     if !clause.is_empty() {
