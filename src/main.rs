@@ -5,15 +5,28 @@ mod dimacs;
 mod lit;
 
 use anyhow::Result;
+use clap::Parser;
 
-enum Res {
-    Sat,
-    Unsat,
-    Normal,
+#[derive(Parser)]
+#[clap(version, about, long_about = None)]
+#[clap(propagate_version = true)]
+struct Cli {
+    /// the path to the DIMACS CNF file
+    filepath: String,
+
+    /// Load cnf from the examples directory: examples/cnf/
+    #[clap(short, long)]
+    example: bool,
 }
 
 fn main() -> Result<()> {
-    let cnf = dimacs::parse("examples/cnf/3SAT.cnf")?;
+    let cli = Cli::parse();
+
+    let cnf = if cli.example {
+        dimacs::parse(&format!("examples/cnf/{}", cli.filepath))?
+    } else {
+        dimacs::parse(&cli.filepath)?
+    };
     println!("{cnf:#?}");
 
     Ok(())

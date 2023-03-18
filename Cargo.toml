@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 anyhow = { version = "1.0.70", features = ["backtrace"] }
+clap = { version = "4.1.10", features = ["derive"] }
 eh = "0.1.0"

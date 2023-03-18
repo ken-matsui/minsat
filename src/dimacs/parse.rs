@@ -29,7 +29,7 @@ pub(crate) trait Parse {
 impl Parse for Path {
     fn parse(&self) -> Result<Cnf> {
         if !self.exists() {
-            bail!("The file `{self:?}` does not exist");
+            bail!("The file {self:?} does not exist");
         }
         if Some(OsStr::new("cnf")) != self.extension() {
             bail!("The file extension must be `.cnf`");
