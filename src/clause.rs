@@ -5,11 +5,17 @@ use std::{fmt, ops};
 #[derive(Default)]
 pub(crate) struct Clause(pub(crate) Vec<Lit>);
 
-impl<'a> ops::Deref for Clause {
+impl ops::Deref for Clause {
     type Target = Vec<Lit>;
 
     fn deref(&self) -> &Self::Target {
         &self.0
+    }
+}
+
+impl ops::DerefMut for Clause {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
     }
 }
 
