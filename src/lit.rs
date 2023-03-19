@@ -8,10 +8,10 @@ pub(crate) struct Lit {
 }
 
 impl Lit {
-    pub(crate) fn new(x: i32, neg: bool) -> Self {
+    pub(crate) fn new(x: i32, is_neg: bool) -> Self {
         assert!(x >= 0);
         Lit {
-            x: 2 * x + neg as i32,
+            x: 2 * x + is_neg as i32,
         }
     }
 

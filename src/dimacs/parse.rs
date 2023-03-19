@@ -66,12 +66,7 @@ impl Parse for Path {
                     if v == 0 {
                         break;
                     }
-                    let num = v.abs() - 1;
-                    if v > 0 {
-                        clause.push(Lit::new(num, false));
-                    } else {
-                        clause.push(Lit::new(num, true));
-                    }
+                    clause.push(Lit::new(v.abs() - 1, v <= 0));
                 }
                 if !clause.is_empty() {
                     cnf.clauses.push(clause);
