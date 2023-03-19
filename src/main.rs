@@ -3,7 +3,9 @@
 mod clause;
 mod dimacs;
 mod lit;
-mod solve;
+mod solver;
+
+use crate::solver::Status;
 
 use anyhow::Result;
 use clap::Parser;
@@ -28,7 +30,18 @@ fn main() -> Result<()> {
     } else {
         dimacs::parse(&cli.filepath)?
     };
-    println!("{cnf}");
+    let result = solver::solve(cnf);
+    println!("s {result}");
+    if let Status::Sat { assigns } = result {
+        for (index, var) in assigns.into_iter().enumerate() {
+            if var {
+                print!("{} ", index + 1);
+            } else {
+                print!("-{} ", index + 1);
+            }
+        }
+        println!("0");
+    }
 
     Ok(())
 }
