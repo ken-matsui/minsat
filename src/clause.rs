@@ -13,12 +13,16 @@ impl<'a> ops::Deref for Clause {
     }
 }
 
-impl fmt::Debug for Clause {
+impl fmt::Display for Clause {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        self.iter().fold(Ok(()), |result, lit| {
-            result.and_then(|_| write!(f, "{lit:?} "))
-        })?;
-        write!(f, "0")
+        write!(
+            f,
+            "{}",
+            self.iter()
+                .map(|lit| lit.to_string())
+                .collect::<Vec<_>>()
+                .join(" ")
+        )
     }
 }
 

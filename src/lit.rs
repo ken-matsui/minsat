@@ -15,12 +15,19 @@ impl Lit {
     }
 
     #[inline]
-    pub(crate) fn pos(&self) -> bool {
-        !self.neg()
+    pub(crate) fn is_pos(&self) -> bool {
+        !self.is_neg()
     }
     #[inline]
-    pub(crate) fn neg(&self) -> bool {
+    pub(crate) fn is_neg(&self) -> bool {
         (self.x & 1).eh()
+    }
+
+    /// Negate this literal
+    #[inline]
+    pub(crate) fn neg(&mut self) -> &Self {
+        self.x ^= 1;
+        self
     }
 
     #[inline]
@@ -29,8 +36,13 @@ impl Lit {
     }
 }
 
-impl fmt::Debug for Lit {
+impl fmt::Display for Lit {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}{}", if self.neg() { "-" } else { "" }, self.var() + 1)
+        write!(
+            f,
+            "{}{}",
+            if self.is_neg() { "-" } else { "" },
+            self.var() + 1
+        )
     }
 }

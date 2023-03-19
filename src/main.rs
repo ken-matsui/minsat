@@ -3,6 +3,7 @@
 mod clause;
 mod dimacs;
 mod lit;
+mod solve;
 
 use anyhow::Result;
 use clap::Parser;
@@ -27,7 +28,7 @@ fn main() -> Result<()> {
     } else {
         dimacs::parse(&cli.filepath)?
     };
-    println!("{cnf:#?}");
+    println!("{cnf}");
 
     Ok(())
 }
