@@ -2,6 +2,7 @@ use std::fmt;
 
 use eh::Eh;
 
+#[derive(Eq, Ord, PartialEq, PartialOrd)]
 pub(crate) struct Lit {
     x: i32,
 }
