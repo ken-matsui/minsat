@@ -1,7 +1,7 @@
 mod cnf;
 mod parse;
 
-use crate::dimacs::cnf::Cnf;
+pub(crate) use crate::dimacs::cnf::Cnf;
 use crate::dimacs::parse::Parse;
 
 use std::path::Path;
