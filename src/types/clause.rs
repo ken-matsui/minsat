@@ -1,4 +1,4 @@
-use crate::lit::Lit;
+use crate::types::lit::Lit;
 
 use std::{fmt, ops};
 

@@ -1,9 +1,8 @@
 #![feature(let_chains)]
 
-mod clause;
 mod dimacs;
-mod lit;
 mod solver;
+mod types;
 
 use crate::solver::Status;
 

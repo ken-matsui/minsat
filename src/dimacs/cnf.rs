@@ -1,4 +1,4 @@
-use crate::clause::Clause;
+use crate::types::Clause;
 
 use std::fmt;
 

@@ -1,9 +1,9 @@
 ///
 /// DIMACS CNF file parser
 ///
-use crate::clause::Clause;
 use crate::dimacs::cnf::Cnf;
-use crate::lit::Lit;
+use crate::types::Clause;
+use crate::types::Lit;
 
 use std::ffi::OsStr;
 use std::fs::File;
